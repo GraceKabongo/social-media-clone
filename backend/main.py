@@ -1,10 +1,9 @@
 from fastapi import FastAPI
-# from decouple import config
-
-# API_USERNAME = config('MONGODB_URL')
+from routes import user
 
 app = FastAPI()
 
+app.include_router(user.router, tags=["users"])
 
 @app.get("/")
 def read_root():
